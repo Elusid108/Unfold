@@ -1,119 +1,21 @@
-# Unfold - Deep Reflection Cards
+# Unfold
+> A sophisticated card-based reflection and journaling platform designed to facilitate structured introspection through curated deck interactions and custom prompt engineering.
 
-A beautiful, interactive card-based application for deep conversations and self-reflection. Explore thought-provoking questions across multiple themed decks, create custom decks, and journey through meaningful dialogue.
+## Overview
+Unfold provides a digital environment for users to engage with thematic prompt decks, streamlining the process of daily reflection or creative brainstorming. The application utilizes a robust state-driven architecture to manage card progression, user favorites, and historical session data entirely on the client side. By leveraging persistent local storage, it ensures data continuity and privacy without requiring a centralized backend infrastructure. The interface focuses on high-fidelity transitions and a minimalist aesthetic to minimize cognitive load during introspective tasks.
 
-## Features
+## Key Features
+* **Dynamic Reflection Engine:** Facilitates deep-dive sessions using randomized or sequential prompt delivery across multiple thematic categories.
+* **Integrated Deck Builder:** Enables users to define, edit, and manage personalized prompt collections through a dedicated administrative interface.
+* **Persistent Session Tracking:** Implements a localized data layer to record session history, favorite prompts, and deck progress across browser restarts.
 
-- **Journey Mode**: Progress through all decks in a structured experience
-- **Freeplay Mode**: Explore individual decks at your own pace
-- **Shuffle Mode**: Draw random cards from all decks combined
-- **Custom Decks**: Create and save your own question sets
-- **Favorites**: Save meaningful questions for later reflection
-- **History Tracking**: Review previously drawn cards and session statistics
-- **Local Storage**: All data persists in your browser - no backend required
+## Technical Architecture
+* **Frontend/UI:** React 18, TypeScript, Tailwind CSS, Framer Motion, Radix UI.
+* **Backend/Logic:** Custom React Hooks (useGameState, useDeckState), LocalStorage API for client-side persistence.
+* **Infrastructure/Hardware:** Vite-based build pipeline with automated GitHub Actions deployment.
 
-## GitHub Pages Deployment
-
-This version is configured for GitHub Pages deployment.
-
-### Quick Start
-
-1. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-2. **Build for production**
-   ```bash
-   npm run build
-   ```
-
-3. **Deploy to GitHub Pages**
-   
-   The `dist` folder contains the production build ready for deployment.
-
-### Deployment Methods
-
-#### Option 1: Manual Deployment
-
-1. Create a new repository named "Unfold" on GitHub
-2. Copy all files from this folder to your new repository
-3. Push to GitHub:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git branch -M main
-   git remote add origin https://github.com/YOUR-USERNAME/Unfold.git
-   git push -u origin main
-   ```
-4. Go to repository Settings → Pages
-5. Set Source to "GitHub Actions" or deploy the `dist` folder manually
-
-#### Option 2: Using gh-pages Branch
-
-```bash
-npm install -g gh-pages
-npm run build
-gh-pages -d dist
-```
-
-Then enable GitHub Pages in your repository settings, selecting the `gh-pages` branch.
-
-### Configuration
-
-The app is configured with `base: '/Unfold/'` in `vite.config.ts`. This ensures all assets load correctly when hosted at `https://YOUR-USERNAME.github.io/Unfold/`.
-
-**Important:** If you rename your repository, update the `base` path in `vite.config.ts`:
-
-```typescript
-export default defineConfig(({ mode }) => ({
-  base: '/YOUR-REPO-NAME/',
-  // ... rest of config
-}));
-```
-
-### Client-Side Routing
-
-This app uses React Router with BrowserRouter. The included `404.html` ensures that client-side routes work correctly on GitHub Pages by redirecting all 404s back to the main app.
-
-## Development
-
-Run the development server locally:
-
-```bash
-npm run dev
-```
-
-The app will be available at `http://localhost:8080`
-
-## Tech Stack
-
-- **Framework**: React 18 + TypeScript
-- **Build Tool**: Vite
-- **UI Components**: Radix UI + shadcn/ui
-- **Styling**: Tailwind CSS
-- **Routing**: React Router
-- **State Management**: React Hooks + Local Storage
-
-## Local Storage
-
-All user data is stored in browser localStorage:
-- Custom decks
-- Favorites
-- Game history
-- Session statistics
-- Deck progress
-
-No server or database required!
-
-## Browser Support
-
-Modern browsers with localStorage support:
-- Chrome/Edge 90+
-- Firefox 88+
-- Safari 14+
-
-## License
-
-See LICENSE file for details.
+## Setup & Deployment
+1. Clone the repository and install project dependencies using `npm install`.
+2. Execute `npm run dev` to launch the local development server with HMR.
+3. Generate production-ready assets by running `npm run build`.
+4. Deploy the contents of the `dist` directory to any static hosting provider.
